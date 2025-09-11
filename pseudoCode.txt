@@ -2,7 +2,7 @@
 
 1. Initialize game variables:
    - gridSize (e.g., 20x20)
-   - snake as an array of coordinates (start with length 1 or 2)
+   - snake as an array of coordinates ( length )
    - direction
    - food position (randomly placed on grid, not on snake)
    - score = 0
