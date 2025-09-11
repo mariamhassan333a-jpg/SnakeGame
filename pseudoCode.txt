@@ -1,0 +1,47 @@
+# Pseudo Code for Snake Game
+
+1. Initialize game variables:
+   - gridSize (e.g., 20x20)
+   - snake as an array of coordinates (start with length 1 or 2)
+   - direction
+   - food position (randomly placed on grid, not on snake)
+   - score = 0
+   - gameOver = false
+   - message  = ""
+   - soundEffect = {
+    eatFoodSound,
+    loseGameSound
+   }
+
+2. Start game loop :
+   - If gameOver, stop loop
+   - Move snake in current direction:
+     - Calculate new head position based on direction
+     - Check for collisions:
+       - If new head is outside grid boundaries, set gameOver = true
+       - If new head overlaps any part of snake body, set gameOver = true
+     - If gameOver, exit loop
+   - Check if new head position matches food position:
+     - If yes:
+       - Increase score
+       - Add new head to snake (grow snake)
+       - Generate new food position (not on snake)
+     - Else:
+       - Move snake forward by adding new head and removing tail
+
+
+3. Listen for user input (keyboard or swipe):
+   - On arrow key or swipe:
+     - Change direction if not opposite to current direction
+
+4. Handle pause/resume:
+   - On pause input, stop game loop timer
+   - On resume input, restart game loop timer
+
+5. Handle restart:
+   - Reset all variables to initial state
+   - Start game loop again
+
+6. End game:
+   - Display game over message and final score
+   - Option to restart game
