@@ -42,6 +42,9 @@
    - Reset all variables to initial state
    - Start game loop again
 
-6. End game:
+6. Handle sound:
+   - Mute the sound
+
+7. End game:
    - Display game over message and final score
    - Option to restart game
