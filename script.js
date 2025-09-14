@@ -81,7 +81,6 @@ const endGame = () => {
   clearInterval(gameInterval)
 }
 
-// Check if the snake has eaten the food
 const checkFoodCollision = () => {
   const head = snake[0]
   return head.x === food.x && head.y === food.y
@@ -104,7 +103,6 @@ const generateFoodPosition = () => {
   return newFoodPosition
 }
 
-// Update the game board
 const updateGameBoard = () => {
   const canvas = document.getElementById("game-board")
   if (!canvas) return
@@ -120,7 +118,6 @@ const updateGameBoard = () => {
   if (scoreElement) scoreElement.textContent = score
 }
 
-// Listen for user input (keyboard)
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
@@ -138,7 +135,6 @@ document.addEventListener("keydown", (event) => {
   }
 })
 
-// Mobile controls
 const upBtn = document.getElementById("up-btn")
 const downBtn = document.getElementById("down-btn")
 const leftBtn = document.getElementById("left-btn")
@@ -176,5 +172,4 @@ if (pauseBtn)
 if (restartBtn) restartBtn.addEventListener("click", startGame)
 if (playAgainBtn) playAgainBtn.addEventListener("click", startGame)
 
-// Start the game when the page loads
 startGame()
