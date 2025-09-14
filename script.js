@@ -3,27 +3,33 @@ const SnakeGameApp = () => {
 }
 
 const SnakeGame = () => {
-  const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
-  const [food, setFood] = useState({ x: 5, y: 5 });
-  const [direction, setDirection] = useState('RIGHT');
-  const [gameOver, setGameOver] = useState(false);
-  const [score, setScore] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [gameSpeed, setGameSpeed] = useState(150);
+  const [snake, setSnake] = useState([{ x: 10, y: 10 }])
+  const [food, setFood] = useState({ x: 5, y: 5 })
+  const [direction, setDirection] = useState("RIGHT")
+  const [gameOver, setGameOver] = useState(false)
+  const [score, setScore] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [gameSpeed, setGameSpeed] = useState(150)
 
-  const gameIntervalRef = useRef(null);
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
+  const gameIntervalRef = useRef(null)
+  const canvasRef = useRef(null)
+  const ctxRef = useRef(null)
 
-  const gridSize = 20;
-  const tileCount = 20;
+  const gridSize = 20
+  const tileCount = 20
 }
 
-
 useEffect(() => {
-    if (canvasRef.current) {
-      ctxRef.current = canvasRef.current.getContext('2d');
-      placeFood();
-      startGame();
-    }
-  }, []);
+  if (canvasRef.current) {
+    ctxRef.current = canvasRef.current.getContext("2d")
+    placeFood()
+    startGame()
+  }
+}, [])
+
+const placeFood = useCallback(() => {
+  const newFood = {
+    x: Math.floor(Math.random() * tileCount),
+    y: Math.floor(Math.random() * tileCount),
+  }
+})
