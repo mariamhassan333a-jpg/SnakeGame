@@ -2,19 +2,15 @@
 const gridSize = { width: 20, height: 20 }
 let snake = [
   { x: 10, y: 10 },
-  { x: 10, y: 9 },
-  { x: 10, y: 8 },
+  { x: 9, y: 10 },
+  { x: 8, y: 10 },
 ]
-let direction = { x: 1, y: 0 } // Corrected: Start moving to the right
+let direction = { x: 1, y: 0 }
 let food = generateFoodPosition()
 let score = 0
 let gameOver = false
 let gameInterval
-// The soundEffect object is assumed to be defined elsewhere in the HTML file.
-const soundEffect = {
-  eatFoodSound: { play: () => console.log("Eating food!") }, // Placeholder
-  loseGameSound: { play: () => console.log("Game over!") }, // Placeholder
-}
+
 // Start the game
 const startGame = () => {
   gameOver = false
@@ -23,12 +19,11 @@ const startGame = () => {
     { x: 10, y: 10 },
     { x: 9, y: 10 },
     { x: 8, y: 10 },
-  ] // Corrected: Initial snake segments align with rightward movement
-  direction = { x: 1, y: 0 } // Corrected: Initial direction to the right
+  ]
+  direction = { x: 1, y: 0 }
   food = generateFoodPosition()
   document.getElementById("final-score").textContent = 0
   document.querySelector(".game-over").style.display = "none"
-  // Clear any existing interval to prevent multiple game loops
   if (gameInterval) clearInterval(gameInterval)
   gameInterval = setInterval(gameLoop, 100)
 }
@@ -36,40 +31,31 @@ const startGame = () => {
 // Game loop
 const gameLoop = () => {
   if (gameOver) return
-
   moveSnake()
   checkCollisions()
-
   if (gameOver) return
-
   if (checkFoodCollision()) {
     score++
     soundEffect.eatFoodSound.play()
-    snake.unshift({ ...snake[0] }) // Grow the snake
+    snake.unshift({ ...snake[0] })
     food = generateFoodPosition()
-    // Generate new food
   } else {
-    snake.unshift({ ...snake[0] }) // Move snake forward
-    snake.pop() // Remove tail
+    snake.unshift({ ...snake[0] })
+    snake.pop()
   }
-
   updateGameBoard()
 }
 
-// Move the snake based on the current direction
 const moveSnake = () => {
   const newHead = {
     x: snake[0].x + direction.x,
     y: snake[0].y + direction.y,
   }
-  snake.unshift(newHead) // Add new head
+  snake.unshift(newHead)
 }
 
-// Check for collisions
 const checkCollisions = () => {
   const head = snake[0]
-
-  // Check for wall collisions
   if (
     head.x < 0 ||
     head.x >= gridSize.width ||
@@ -79,8 +65,6 @@ const checkCollisions = () => {
     endGame()
     return
   }
-
-  // Check for self collisions
   for (let i = 1; i < snake.length; i++) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       endGame()
@@ -123,28 +107,21 @@ const generateFoodPosition = () => {
 // Update the game board
 const updateGameBoard = () => {
   const canvas = document.getElementById("game-board")
-  if (!canvas) return // Add a check to ensure canvas exists
+  if (!canvas) return
   const ctx = canvas.getContext("2d")
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-  // Draw the snake
   ctx.fillStyle = "green"
   snake.forEach((segment) => {
     ctx.fillRect(segment.x * 20, segment.y * 20, 18, 18)
   })
-
-  // Draw the food
   ctx.fillStyle = "red"
   ctx.fillRect(food.x * 20, food.y * 20, 18, 18)
-
-  // Update the score display
   const scoreElement = document.getElementById("score")
   if (scoreElement) scoreElement.textContent = score
 }
 
 // Listen for user input (keyboard)
 document.addEventListener("keydown", (event) => {
-  // Prevent the snake from reversing on itself
   switch (event.key) {
     case "ArrowUp":
       if (direction.y !== 1) direction = { x: 0, y: -1 }
