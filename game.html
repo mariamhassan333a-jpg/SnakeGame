@@ -8,18 +8,45 @@
     <script defer src="script.js"></script>
   </head>
   <body>
+<div id="game-page" class="container">
+            <h1>Snake Game</h1>
+
     <div class="game-container">
-      <h1>Snake Game</h1>
-      <canvas id="game-board" width="200" height="200"></canvas>
-      <div class="controls">
-        <button onclick="window.location.href='index.html'">
-          Back to Home
-        </button>
-        <button id="restart-btn">Restart Game</button>
-      </div>
-      <p class="game-instructions">
-        Use arrow keys to move the snake. Eat food to grow and score points!
-      </p>
+                <div class="score-container">
+                    <span>Score: <span id="score">0</span></span>
+                    <span>High: <span id="high-score">0</span></span>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="game-board" width="400" height="400"></canvas>
+
+                    <div class="game-over">
+                        <h2>Game Over!</h2>
+                        <p>Your score: <span id="final-score">0</span></p>
+                        <button class="btn" id="play-again-btn">Play Again</button>
+                    </div>
+                </div>
+
+                <div id="mobile-controls">
+                    <button id="up-btn">↑</button>
+                    <button id="left-btn">←</button>
+                    <button id="right-btn">→</button>
+                    <button id="down-btn">↓</button>
+                </div>
+
+                <div class="controls">
+                    <button id="pause-btn" class="btn secondary">Pause</button>
+                    <button id="restart-btn" class="btn secondary">Restart</button>
+                    <button id="home-btn" class="btn"
+                    onclick="window.location.href='index.html'">Home</button>
+                </div>
+
+                <p class="game-instructions">
+                    Use arrow keys to move the snake. Eat food to grow and score points!
+                </p>
+            </div>
+        </div>
     </div>
+
   </body>
 </html>

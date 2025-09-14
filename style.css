@@ -1,56 +1,216 @@
 @import url("https://fonts.googleapis.com/css2?family=Story+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Knewave&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: url("background.png");
+  background: url(background.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  min-height: 80vh;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh;
   width: 100vw;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-}
-
-h1 {
+  padding: 20px;
   font-family: "Story Script", sans-serif;
-  text-align: left;
-  font-size: 50px;
 }
 
-p {
-  font-family: "Story Script", sans-serif;
-  border-style: solid;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  padding: 5px;
-  font-size: larger;
-}
-
-img {
-  float: left;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  float: right;
+#app {
+  width: 100%;
+  max-width: 800px;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
-.play-btn {
-  width: 150px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: x-large;
-  margin: 15px 0;
-  box-shadow: 2px 2px 3px rgb(173, 145, 112);
-  border: 0px;
+img {
+  float: right;
+  margin: auto 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #000000;
+  text-shadow: 0 0 10px rgba(169, 175, 167, 0.7);
   font-family: "Story Script", sans-serif;
+}
+
+p {
+  font-size: x-large;
+  margin-bottom: 30px;
+  color: #000000;
+  font-family: "Story Script", sans-serif;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: #b1b8b1;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background: #e6e6e6;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.secondary {
+  background: #a6aeb3;
+}
+
+.btn.secondary:hover {
+  background: #a6aeb3;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.canvas-container {
+  position: relative;
+  border: 5px solid #a6aeb3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(125, 131, 124, 0.5);
+}
+
+#game-board {
+  background-color: #6e727c;
+  display: block;
+}
+
+.score-container {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#mobile-controls {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+#mobile-controls button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(134, 130, 130);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#mobile-controls button:active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#up-btn {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#left-btn {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#right-btn {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#down-btn {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.game-over h2 {
+  font-size: 2.5rem;
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  #game-board {
+    width: 300px;
+    height: 300px;
+  }
+
+  #mobile-controls {
+    display: grid;
+  }
+
+  .score-container {
+    font-size: 1.2rem;
+  }
 }
