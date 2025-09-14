@@ -7,11 +7,7 @@
 }
 
 body {
-  background: url(background.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
+  background-color: white;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -20,7 +16,15 @@ body {
   padding: 20px;
   font-family: "Story Script", sans-serif;
 }
-
+.index-page {
+  background: url(background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh;
+  width: 100vw;
+}
 #app {
   width: 100%;
   max-width: 800px;
