@@ -101,16 +101,16 @@ p {
 
 .canvas-container {
   position: relative;
-  border: 5px solid #a6aeb3;
+  border: 5px solid;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(125, 131, 124, 0.5);
+  box-shadow: 0 0 20px;
 }
 
-#game-board {
+/* #game-board {
   background-color: #6e727c;
   display: block;
-}
+} */
 
 .score-container {
   font-size: 1.5rem;
@@ -144,7 +144,7 @@ p {
   height: 60px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgb(134, 130, 130);
+  border: 2px solid;
   font-size: 1.5rem;
   display: flex;
   justify-content: center;
