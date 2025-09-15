@@ -30,7 +30,7 @@
 ![HomePage](./Homepage.png)
 
 ##### image header 2
-![GameStyle](./Game.png)
+![GameStyle](./game.png)
 ***
 
 ### ***Future Updates***

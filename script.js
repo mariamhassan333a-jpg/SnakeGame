@@ -36,11 +36,11 @@ const gameLoop = () => {
   if (gameOver) return
   if (checkFoodCollision()) {
     score++
+    // No need to unshift and then pop, the new head is already added
+    // in moveSnake() so we just need to leave the tail to make the snake grow.
     soundEffect.eatFoodSound.play()
-    snake.unshift({ ...snake[0] })
     food = generateFoodPosition()
   } else {
-    snake.unshift({ ...snake[0] })
     snake.pop()
   }
   updateGameBoard()
