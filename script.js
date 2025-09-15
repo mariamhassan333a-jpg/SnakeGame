@@ -2,10 +2,10 @@
 const gridSize = { width: 20, height: 20 }
 let snake = [
   { x: 10, y: 10 },
-  { x: 9, y: 10 },
-  { x: 8, y: 10 },
+  { x: 10, y: 9 },
+  { x: 10, y: 8 },
 ]
-let direction = { x: 1, y: 0 }
+let direction = { x: 0, y: 1 }
 let food = generateFoodPosition()
 let score = 0
 let gameOver = false
@@ -17,32 +17,33 @@ const startGame = () => {
   score = 0
   snake = [
     { x: 10, y: 10 },
-    { x: 9, y: 10 },
-    { x: 8, y: 10 },
+    { x: 10, y: 9 },
+    { x: 10, y: 8 },
   ]
-  direction = { x: 1, y: 0 }
+  direction = { x: 0, y: 1 }
   food = generateFoodPosition()
   document.getElementById("final-score").textContent = 0
   document.querySelector(".game-over").style.display = "none"
-  if (gameInterval) clearInterval(gameInterval)
+  if (gameInterval) clearInterval(gameInterval) // Prevent multiple intervals
   gameInterval = setInterval(gameLoop, 100)
 }
 
 // Game loop
 const gameLoop = () => {
   if (gameOver) return
+
   moveSnake()
   checkCollisions()
   if (gameOver) return
+
   if (checkFoodCollision()) {
     score++
-    // No need to unshift and then pop, the new head is already added
-    // in moveSnake() so we just need to leave the tail to make the snake grow.
     soundEffect.eatFoodSound.play()
     food = generateFoodPosition()
   } else {
     snake.pop()
   }
+
   updateGameBoard()
 }
 
@@ -56,6 +57,7 @@ const moveSnake = () => {
 
 const checkCollisions = () => {
   const head = snake[0]
+
   if (
     head.x < 0 ||
     head.x >= gridSize.width ||
@@ -65,6 +67,7 @@ const checkCollisions = () => {
     endGame()
     return
   }
+
   for (let i = 1; i < snake.length; i++) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       endGame()
@@ -86,7 +89,6 @@ const checkFoodCollision = () => {
   return head.x === food.x && head.y === food.y
 }
 
-// Generate food position
 const generateFoodPosition = () => {
   let newFoodPosition
   do {
@@ -108,12 +110,15 @@ const updateGameBoard = () => {
   if (!canvas) return
   const ctx = canvas.getContext("2d")
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+
   ctx.fillStyle = "green"
   snake.forEach((segment) => {
     ctx.fillRect(segment.x * 20, segment.y * 20, 18, 18)
   })
+
   ctx.fillStyle = "red"
   ctx.fillRect(food.x * 20, food.y * 20, 18, 18)
+
   const scoreElement = document.getElementById("score")
   if (scoreElement) scoreElement.textContent = score
 }
@@ -135,6 +140,7 @@ document.addEventListener("keydown", (event) => {
   }
 })
 
+// Mobile controls
 const upBtn = document.getElementById("up-btn")
 const downBtn = document.getElementById("down-btn")
 const leftBtn = document.getElementById("left-btn")
@@ -157,7 +163,6 @@ if (rightBtn)
     if (direction.x !== -1) direction = { x: 1, y: 0 }
   })
 
-// Pause and restart functionality
 const pauseBtn = document.getElementById("pause-btn")
 const restartBtn = document.getElementById("restart-btn")
 const playAgainBtn = document.getElementById("play-again-btn")
