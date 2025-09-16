@@ -43,10 +43,10 @@
 
 ### ***Credits***
 
-##### Funny Images: [DuckDuckGo Search](http://www.duckduckgo.com)
+##### Help Codes : [SnakeGame Search](https://medium.com/@j0hnskot/how-to-make-a-snake-game-with-javascript-and-html-7c8c78b85873)
 
-##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
+##### W3schools Guide: [Html DOM](https://www.w3schools.com/jsref/met_document_getelementbyid.asp)
 
-##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+##### Tutorials Games: [Tutorials & Notes](https://marina-ferreira.github.io/projects/)
 ***
 
