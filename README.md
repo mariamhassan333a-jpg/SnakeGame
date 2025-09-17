@@ -21,7 +21,7 @@
 
 ##### The first page introduces the game with its name, a motivating message to encourage players,
 ##### and a prominent **Start Play** button to jump right into the action.
-##### The project was deployed and can be viewed [here](URL).
+##### The project was deployed and can be viewed [here](https://snake_game01.surge.sh/).
 ***
 
 ### ***Screenshots***
