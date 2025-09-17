@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -111,10 +111,10 @@ p {
   box-shadow: 0 0 20px;
 }
 
-/* #game-board {
+#game-board {
   background-color: #6e727c;
   display: block;
-} */
+}
 
 .score-container {
   font-size: 1.5rem;
@@ -156,9 +156,9 @@ p {
   cursor: pointer;
 }
 
-/* #mobile-controls button:active {
+#mobile-controls button:active {
   background: rgba(255, 255, 255, 0.4);
-} */
+}
 
 #up-btn {
   grid-column: 2;
