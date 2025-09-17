@@ -13,11 +13,12 @@ const gameSpeed = 300
 
 // =======================
 // =======================
-// الأصوات (يمكن استبدالها بأصوات حقيقية)
+// الأصوات ( )
 // =======================
+
 const soundEffect = {
-  eatFoodSound: { play: () => console.log("أكلت طعام!") },
-  loseGameSound: { play: () => console.log("انتهت اللعبة!") },
+  eatFoodSound: new Audio("./food_G1U6tlb.mp3"),
+  loseGameSound: new Audio("./losing-horn-313723.mp3"),
 }
 
 // =======================
